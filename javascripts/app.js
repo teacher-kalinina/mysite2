@@ -20,15 +20,23 @@ var main=function () {
 			else if (el.parent().is(":nth-child(2)")){
 				$content=$("<ul>");
 				massiv.forEach(function(todo){
-					$content.append($("<li>").text(todo))
+					$content.append($("<li>").text(todo));
+
 					$("main .content").append($content);
 				});
 			}
 			else if (el.parent().is(":nth-child(3)")){
 				//$content.append("<button>+</button>");
 				$("main .content").append($("<input>"));
-				$("main .content").append("<button>+</button>");
-				//<button>+</button>");
+				$("main .content").append($("<button>").text("+"));
+					$("main .content button").on("click",function(event){
+						if ($("main .content input").val()!==""){
+						//console.log($("main .content input").val());
+						massiv.push($("main .content input").val());
+						$("main .content input").val("");
+					}
+					});
+				
 			}
 			return false;
 		})
