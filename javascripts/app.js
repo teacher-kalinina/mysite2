@@ -7,7 +7,7 @@ var main=function () {
 		$(element).on("click",function(){
 			var el=$(element),$content;
 			$(".tabs a span").removeClass("active");
-			$(element).addClass("active");
+			el.addClass("active");
 			$("main .content").empty();
 			if (el.parent().is(":nth-child(1)")){
 				$content=$("<ul>");
@@ -24,8 +24,11 @@ var main=function () {
 					$("main .content").append($content);
 				});
 			}
-			else{
-				console.log("three");
+			else if (el.parent().is(":nth-child(3)")){
+				//$content.append("<button>+</button>");
+				$("main .content").append($("<input>"));
+				$("main .content").append("<button>+</button>");
+				//<button>+</button>");
 			}
 			return false;
 		})
